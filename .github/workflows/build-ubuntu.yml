@@ -1,0 +1,22 @@
+name: Ubuntu
+
+on: [ push, pull_request ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: true
+      matrix:
+        java_version: [ 11, 17 ]
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: "Set up JDK ${{ matrix.java_version }}"
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'adopt'
+          java-version: ${{ matrix.java_version }}
+
+      - name: build
+        run: sbt test
