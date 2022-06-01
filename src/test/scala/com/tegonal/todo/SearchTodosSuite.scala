@@ -1,5 +1,7 @@
 package com.tegonal.todo
 
+import com.tegonal.todo.analysis.AnalysisException
+
 import java.nio.file.{Files, Path}
 import java.nio.charset.StandardCharsets
 import java.nio.file.attribute.{DosFileAttributes, PosixFilePermissions}
@@ -64,8 +66,8 @@ class TodoFoundSuite extends munit.FunSuite {
         Files.deleteIfExists(file)
       }
     ).test(description) { file =>
-      intercept[IllegalStateException] {
-        todoChecker(file, todoIndicator, issueIndicator)
+      intercept[AnalysisException] {
+        throwingTodoChecker(file, todoIndicator, issueIndicator)
       }
     }
   })

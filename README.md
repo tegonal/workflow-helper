@@ -24,9 +24,43 @@ For instance, the [README of v0.1.0](https://github.com/tegonal/workflow-helper/
 Workflow helper is currently featuring the following scripts: 
 
 ## TODO Checker
-Provides different modes to detect TODOs in files.
+Provides ways to detect unwanted TODOs in files.
 
-More explanation will follow.
+Following the output of running `todo-checker --help`:
+
+<todo-checker-help>
+
+<!-- auto-generated, do not modify here but in ./scripts/todo-checker.sh -->
+```text
+Parameters:
+directory            -d|--directory
+todo                 -t|--todo-regex
+issue                -i|--issue-regex
+
+Examples:
+# searches for todos in current directory
+# uses default TodoIndicator TODO|FIXME
+# uses default IssueIndicator #d+
+todo-checker
+
+# searches for todos in directory ./foo with default indicators
+todo-checker -d ./foo
+todo-checker --directory ./foo
+
+# uses a custom TodoIndicator
+todo-checker -t "TODOs?"
+todo-checker --todo-regex "TODOs?"
+
+# searches todos for a specific issue by using a custom IssueIndicator
+todo-checker -i "#123"
+todo-checker --issue-regex "#123"
+
+# searches todos for specific issues by using a custom IssueIndicator
+todo-checker -i "#123|op#478"
+todo-checker --issue-regex "#123|op#478"
+```
+
+</todo-checker-help>
 
 # License
 Workflow helper is licensed under [EUPL 1.2](https://joinup.ec.europa.eu/collection/eupl/eupl-text-11-12).

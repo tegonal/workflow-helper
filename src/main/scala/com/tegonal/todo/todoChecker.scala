@@ -7,10 +7,22 @@ import scala.collection.mutable.ListBuffer
 import scala.util.CommandLineParser.FromString
 import scala.util.Try
 import scala.util.matching.Regex
-import com.tegonal.todo.analysis.{FindTodoProcessor, Visitor}
+import com.tegonal.todo.analysis.{AnalysisException, FindTodoProcessor, Visitor}
 import com.tegonal.todo.reporting.ExceptionReporter
 
 @main def todoChecker(
+    directory: Path,
+    todoIndicator: TodoIndicator,
+    issueIndicator: IssueIndicator,
+): Unit = {
+  try throwingTodoChecker(directory, todoIndicator, issueIndicator)
+  catch
+    case e: AnalysisException =>
+      Console.println(e.getMessage)
+      System.exit(1)
+}
+
+def throwingTodoChecker(
     directory: Path,
     todoIndicator: TodoIndicator,
     issueIndicator: IssueIndicator,
@@ -29,7 +41,6 @@ import com.tegonal.todo.reporting.ExceptionReporter
     ExceptionReporter()
   ).foreach(r => r.report(results))
 }
-
 given FromString[Path] with
   def fromString(s: String): Path = Paths.get(s)
 
