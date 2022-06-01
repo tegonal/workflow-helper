@@ -7,3 +7,4 @@ out
 .vscode
 .metals
 metals.sbt
+/scripts/workflow-helper.jar

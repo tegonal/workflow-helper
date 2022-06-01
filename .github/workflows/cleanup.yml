@@ -15,13 +15,15 @@ jobs:
         with:
           distribution: 'adopt'
           java-version: 11
-      - name: format sources
+      - name: Format Sources
         run: sbt scalafmtAll scalafmtSbt
+      - name: Update help snippets in README
+        run: ./scripts/update-readme-help.sh
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v4
         with:
           branch: auto-cleanup
-          title: Format sources
-          commit-message: format sources
-          body: Looks like someone forgot to run `sbt sclafafmtAll scalafmtSbt` before committing. There you go :)
+          title: Cleanup
+          commit-message: cleanup sources
+          body: Looks like someone forgot to run some commands before committing. I did it for them :)
           delete-branch: true
