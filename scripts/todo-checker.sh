@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+set -e
+
+current_dir="$( cd "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
+source "$current_dir/parse-args.sh"
+
+declare -A params
+declare directory todo issue
+params[directory]='-d|--directory'
+params[todo]='-t|--todo-regex'
+params[issue]='-i|--issue-regex'
+
+declare examples
+examples=$(cat << EOM
+# searches for todos in current directory
+# uses default TodoIndicator TODO|FIXME
+# uses default IssueIndicator #\d+
+todo-checker
+
+# searches for todos in directory ./foo with default indicators
+todo-checker -d ./foo
+todo-checker --directory ./foo
+
+# uses a custom TodoIndicator
+todo-checker -t "TODOs?"
+todo-checker --todo-regex "TODOs?"
+
+# searches todos for a specific issue by using a custom IssueIndicator
+todo-checker -i "#123"
+todo-checker --issue-regex "#123"
+
+# searches todos for specific issues by using a custom IssueIndicator
+todo-checker -i "#123|op#478"
+todo-checker --issue-regex "#123|op#478"
+EOM
+)
+
+parseArguments params "$@"
+if ! [ -v directory ]; then directory="."; fi
+if ! [ -v todo ]; then todo=""; fi
+if ! [ -v issue ]; then issue=""; fi
+checkAllArgumentsSet params
+
+
+java -cp "$current_dir/workflow-helper.jar" com.tegonal.todo.todoChecker "$directory" "$todo" "$issue"
