@@ -101,6 +101,7 @@ jobs:
       - name: prepare next dev
         run: |
           ./scripts/prepare-next-dev-cycle.sh "${{ steps.extract.outputs.nextVersion }}"
+          sbt test
           git push
 
       - name: Merge back to main
