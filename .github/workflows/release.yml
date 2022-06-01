@@ -84,7 +84,7 @@ jobs:
           tags: ${{ steps.extract.outputs.mainTag }}
 
       - name: Run docker
-        run: docker run --rm ${{ steps.extract.outputs.mainTag }} todo-checker --help"
+        run: docker run --rm ${{ steps.extract.outputs.mainTag }} todo-checker --help
 
 
       - name: Build and push
@@ -107,9 +107,9 @@ jobs:
       - name: Merge back to main
         if: steps.extract.outputs.isLatest
         run: |
-          echo "ref: ${GITHUB_REF}"
+          echo "ref: ${GITHUB_REF_NAME}"
           curl \
             -X POST \
             -H "Accept: application/vnd.github.v3+json" \
             https://api.github.com/repos/tegonal/workflow-helper/pulls \
-            -d '{"title":"Merge ${{ steps.extract.outputs.version }} back to main","head":"${GITHUB_REF}","base":"main"}'
+            -d '{"title":"Merge ${{ steps.extract.outputs.version }} back to main","head":"${GITHUB_REF_NAME}","base":"main"}'
