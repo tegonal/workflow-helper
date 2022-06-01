@@ -1,0 +1,27 @@
+name: Cleanup
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: "Set up JDK 11"
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'adopt'
+          java-version: 11
+      - name: format sources
+        run: sbt sclafafmtAll scalafmtSbt
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v4
+        with:
+          branch: auto-cleanup
+          title: Format sources
+          commit-message: format sources
+          body: Looks like someone forgot to run `sbt sclafafmtAll scalafmtSbt` before committing. There you go :)
+          delete-branch: true
