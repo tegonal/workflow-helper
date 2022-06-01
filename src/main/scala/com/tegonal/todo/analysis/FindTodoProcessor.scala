@@ -8,7 +8,7 @@ import scala.collection.mutable.ListBuffer
 import scala.util.matching.Regex
 
 class FindTodoProcessor(
-    todoIndicator: TodoIndicator,
+      todoIndicator: TodoIndicator,
     issueIndicator: IssueIndicator
 ) extends Processor {
   override type IntermediateResult = Todo
