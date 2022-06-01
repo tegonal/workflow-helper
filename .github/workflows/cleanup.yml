@@ -16,7 +16,7 @@ jobs:
           distribution: 'adopt'
           java-version: 11
       - name: format sources
-        run: sbt sclafafmtAll scalafmtSbt
+        run: sbt scalafmtAll scalafmtSbt
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v4
         with:
