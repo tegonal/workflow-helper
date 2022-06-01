@@ -42,13 +42,17 @@ class Visitor(processors: Seq[Processor]) extends SimpleFileVisitor[Path] {
       FileVisitResult.CONTINUE
     } catch {
       case t: Throwable =>
-        Console.err.println(s"$RESET${YELLOW}WARNING$RESET analysing file $file -- error: ${t.getMessage}")
+        Console.err.println(
+          s"$RESET${YELLOW}WARNING$RESET analysing file $file -- ${t.getClass.getName}: ${t.getMessage}"
+        )
         FileVisitResult.CONTINUE
     }
   }
 
   override def visitFileFailed(file: Path, exc: IOException): FileVisitResult = {
-    Console.err.println(s"$RESET${RED}ERROR$RESET for file $file: ${exc.getMessage}")
+    Console.err.println(
+      s"$RESET${YELLOW}WARNING$RESET could not visit $file -- ${exc.getClass.getName}: ${exc.getMessage}"
+    )
     FileVisitResult.CONTINUE
   }
 }
