@@ -11,3 +11,6 @@ runs:
   image: 'docker://tegonal/workflow-helper:v0.1.0'
   args:
     - ${{ inputs.args }}
+branding:
+  icon: 'thermometer'
+  color: 'green'
