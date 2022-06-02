@@ -107,3 +107,4 @@ jobs:
           git checkout -b main origin/main
           git merge -m "Merge ${{ env.version }} back to main" "$GITHUB_REF"
           git push origin -d "$GITHUB_REF"
+          git push
