@@ -5,10 +5,17 @@ current_dir="$( cd "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 source "$current_dir/parse-args.sh"
 
 declare -A params
+declare -A help
+
 declare directory todo issue
 params[directory]='-d|--directory'
+help[directory]='(optional) specifies which directory (including sub directories) shall be analysed -- default: .'
+
 params[todo]='-t|--todo-regex'
+help[todo]='(optional) regex used to match todos -- default: TODO|FIXME'
+
 params[issue]='-i|--issue-regex'
+help[issue]='(optional) regex used to match an issue number -- default: #\d+'
 
 declare examples
 examples=$(cat << EOM

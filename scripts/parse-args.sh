@@ -25,7 +25,7 @@ function printHelp {
   local -n names=$1
   printf "\n\033[1;33mParameters:\033[0m\n"
   for paramName in "${!names[@]}"; do
-    printf "%-20s %s\n" "$paramName" "${parameterNames[$paramName]}"
+    printf "%-20s %s\n" "${names[$paramName]}" "${help[$paramName]}"
   done
   if [ -v examples ]; then
     printf "\n\033[1;33mExamples:\033[0m\n"
