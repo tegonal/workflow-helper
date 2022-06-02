@@ -74,6 +74,9 @@ todo-checker --issue-regex "#123|op#478"
 </todo-checker-help>
 
 # Usage GitHub Workflow
+Following an example for the [TODO checker](#todo-checker) script, executing the script twice with different arguments.
+
+.github/workflows/workflow-helper.yml
 ```yaml
 name: Workflow-helper
 on: [push, pull_request]

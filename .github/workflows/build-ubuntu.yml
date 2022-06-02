@@ -31,3 +31,8 @@ jobs:
           if ./scripts/todo-checker.sh ; then 
             echo "todo-checker should have found todos and fail but exit code was 0" && false; 
           fi
+      - name: Check no own todos
+        if: matrix.java_version == 11
+        uses: tegonal/workflow-helper@v0.2.7
+        with:
+          commands: 'todo-checker -i "wh#\d+"'
