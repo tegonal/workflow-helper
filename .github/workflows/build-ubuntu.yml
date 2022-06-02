@@ -24,3 +24,10 @@ jobs:
 
       - name: build
         run: sbt test
+
+      - name: check finds test todos
+        run: |
+          ./scripts/dev/assemble.sh
+          if ./scripts/todo-checker.sh ; then 
+            echo "todo-checker should have found todos and fail but exit code was 0" && false; 
+          fi
