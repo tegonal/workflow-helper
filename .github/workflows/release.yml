@@ -106,16 +106,7 @@ jobs:
 
       - name: Merge back to main
         if: steps.extract.outputs.isLatest
-        uses: actions/github-script@v6
-        env:
-          version: ${{ steps.extract.outputs.version }}
-        with:
-          script: |
-            const { repo, owner } = context.repo;
-            github.rest.pulls.create({
-              title: 'Merge ${{ env.version }} back to main',
-              owner,
-              repo,
-              head: '${{ github.ref_name }}',
-              base: 'main',
-            });
+        run: |
+          git checkout main
+          git merge -m "Merge ${{ env.version }} back to main"
+          git push
