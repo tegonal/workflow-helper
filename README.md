@@ -14,7 +14,7 @@
 
 # Workflow Helper
 
-Utility which helps in managing your workflows.
+Utility which helps in managing your workflows, i.e. development process, work process etc.
 
 ---
 ❗ You are taking a *sneak peek* at the next version.
@@ -22,6 +22,15 @@ Please have a look at the README of the git tag in case you are looking for the 
 For instance, the [README of v0.2.0](https://github.com/tegonal/workflow-helper/tree/v0.2.0/README.md).
 
 ---
+
+**Table of Content**
+- [TODO Checker](#todo-checker)
+- [Usage GitHub Workflow](#usage-github-workflow)
+- [Usage GitLab](#usage-gitlab)
+- [Contributors and contribute](#contributors-and-contribute)
+- [License](#license)
+
+# Scripts
 
 Workflow helper is currently featuring the following scripts: 
 
@@ -63,6 +72,34 @@ todo-checker --issue-regex "#123|op#478"
 ```
 
 </todo-checker-help>
+
+# Usage GitHub Workflow
+```yaml
+name: Workflow-helper
+on: [push, pull_request]
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:           
+      - name: Check no todos
+        uses: tegonal/workflow-helper@v1
+        with:
+          commands: 'todo-checker; todo-checker -i "proj#\d+"'
+```
+
+# Usage Gitlab
+Following an example for the [TODO checker](#todo-checker) script, executing the script twice with different arguments.
+
+.gitlab.yml
+```yaml
+check-for-todos:
+  image: tegonal/workflow-helper
+  stage: check
+  script: 
+    - todo-checker
+    - todo-checker -i "proj#\d+"  
+```
+
 
 # Contributors and contribute
 

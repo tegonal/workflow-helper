@@ -12,7 +12,7 @@ function checkAllArgumentsSet {
   done
   if [ "$good" -eq 0 ]; then
     echo >&2 ""
-    echo >&2 "following the documentation how you are supposed to pass the args:"
+    echo >&2 "following the help documentation:"
     echo >&2 ""
     printHelp >&2 parameterNames
     echo >&2 ""
