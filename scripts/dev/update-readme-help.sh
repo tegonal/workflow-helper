@@ -2,7 +2,7 @@
 set -e
 
 current_dir="$( cd "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
-cd "$current_dir/.."/
+cd "$current_dir/../../"
 
 sbt "set assembly / test := {}; assembly"
 cp ./target/scala*/workflow-helper-assembly*.jar ./scripts/workflow-helper.jar
