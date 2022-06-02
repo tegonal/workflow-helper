@@ -3,13 +3,13 @@
 [![Download](https://img.shields.io/badge/Download-v0.2.7-%23007ec6)](https://hub.docker.com/r/tegonal/workflow-helper/tags?&name=v0.2.7)
 [![EUPL](https://img.shields.io/badge/%E2%9A%96-EUPL%201.2-%230b45a6)](https://joinup.ec.europa.eu/collection/eupl/eupl-text-11-12 "License")
 [![Build Status Ubuntu](https://github.com/tegonal/workflow-helper/workflows/Ubuntu/badge.svg?event=push&branch=main)](https://github.com/tegonal/workflow-helper/actions?query=workflow%3AUbuntu+branch%3Amain)
-[![Newcomers Welcome](https://img.shields.io/badge/%F0%9F%91%8B-Newcomers%20Welcome-blueviolet)](https://github.com/tegonal/workflow-helper/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22 "Ask in slack for help")
+[![Newcomers Welcome](https://img.shields.io/badge/%F0%9F%91%8B-Newcomers%20Welcome-blueviolet)](https://github.com/tegonal/workflow-helper/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22 "Ask in discussions for help")
 
 <!-- for a specific release -->
 <!--
 [![Download](https://img.shields.io/badge/Download-v0.2.7-%23007ec6)](https://hub.docker.com/r/tegonal/workflow-helper/tags?&name=v0.2.7)
 [![EUPL](https://img.shields.io/badge/%E2%9A%96-EUPL%201.2-%230b45a6)](https://joinup.ec.europa.eu/collection/eupl/eupl-text-11-12 "License")
-[![Newcomers Welcome](https://img.shields.io/badge/%F0%9F%91%8B-Newcomers%20Welcome-blueviolet)](https://github.com/tegonal/workflow-helper/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22 "Ask in slack for help")
+[![Newcomers Welcome](https://img.shields.io/badge/%F0%9F%91%8B-Newcomers%20Welcome-blueviolet)](https://github.com/tegonal/workflow-helper/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22 "Ask in discussions for help")
 -->
 
 # Workflow Helper
