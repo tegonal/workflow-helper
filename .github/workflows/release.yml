@@ -53,11 +53,11 @@ jobs:
       - name: Update Latest version
         if: steps.extract.outputs.isLatest
         run: |
-          ./scripts/update-latest-version.sh "${{ steps.extract.outputs.version }}"
+          ./scripts/dev/update-latest-version.sh "${{ steps.extract.outputs.version }}"
 
       - name: Prepare Release
         run: |
-          ./scripts/prepare-release.sh "${{ steps.extract.outputs.version }}"
+          ./scripts/dev/prepare-release.sh "${{ steps.extract.outputs.version }}"
 
       - name: Build assembly
         run: sbt assembly
@@ -100,7 +100,7 @@ jobs:
 
       - name: prepare next dev
         run: |
-          ./scripts/prepare-next-dev-cycle.sh "${{ steps.extract.outputs.nextVersion }}"
+          ./scripts/dev/prepare-next-dev-cycle.sh "${{ steps.extract.outputs.nextVersion }}"
           sbt test
           git push
 

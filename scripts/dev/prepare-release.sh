@@ -7,17 +7,13 @@ if [[ -z "$1" ]]; then
 fi
 
 version=$1
-echo "prepare release of version $version"
+echo "prepare release for version $version"
 
 current_dir="$( cd "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 
-sbt scalafmtAll scalafmtSbt
+"$current_dir/cleanup.sh"
 
-"$current_dir/update-readme-help.sh"
-
-cd "$current_dir/.."/
-
-
+cd "$current_dir/../../"
 
 perl -0777 -i \
   -pe 's/(<!-- for main -->\n)\n([\S\s]*?)(\n<!-- for a specific release -->\n)<!--\n([\S\s]*?)-->\n(\n# Workflow)/$1<!--\n$2-->$3\n$4\n$5/;' \
