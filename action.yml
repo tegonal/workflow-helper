@@ -8,7 +8,7 @@ inputs:
     required: true
 runs:
   using: 'docker'
-  image: 'docker://tegonal/workflow-helper:v0.1.0'
+  image: 'docker://tegonal/workflow-helper:v0.2.2'
   args:
     - bash -c '${{ inputs.commands }}'
 branding:
