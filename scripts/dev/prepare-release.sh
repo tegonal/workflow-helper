@@ -16,16 +16,16 @@ cd "$current_dir/../../"
 
 perl -0777 -i \
   -pe 's/(<!-- for main -->\n)\n([\S\s]*?)(\n<!-- for a specific release -->\n)<!--\n([\S\s]*?)-->\n(\n# Workflow)/$1<!--\n$2-->$3\n$4\n$5/;' \
-  -pe "s@(<!-- for a specific release -->[\S\s]+?https://img.shields.io/badge/Download-)[^-]+(-.*?https://hub.docker.com/r/tegonal/workflow-helper/tags\?&name=)[^\)]+\)@\$1$version\$2$version\)@;" \
+  -pe "s@(<!-- for a specific release -->[\S\s]+?https://img.shields.io/badge/Download-)[^-]+(-.*?https://hub.docker.com/r/tegonal/workflow-helper/tags\?&name=)[^\)]+\)@\${1}$version\${2}$version\)@;" \
   -pe 's/(---\n❗ You are taking[\S\s]+?---)/<!$1>/;' \
   ./README.md
 
 perl -0777 -i \
-  -pe "s@(ThisBuild / version := \")[^\"]+\"@\$1$version\"@;" \
+  -pe "s@(ThisBuild / version := \")[^\"]+\"@\${1}$version\"@;" \
   ./build.sbt
 
 perl -0777 -i \
-  -pe "s(@image: 'docker://tegonal/workflow-helper:)[^']+'@\$1$version'@;" \
+  -pe "s@(image: 'docker://tegonal/workflow-helper:)[^']+'@\${1}$version'@;" \
   ./action.yml
 
 git commit -a -m "$version"

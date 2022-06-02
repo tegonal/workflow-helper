@@ -18,7 +18,7 @@ perl -0777 -i \
   ./README.md
 
 perl -0777 -i \
-  -pe "s@(ThisBuild / version := \")[^\"]+\"@\$1$version\"@;" \
+  -pe "s@(ThisBuild / version := \")[^\"]+\"@\${1}$version\"@;" \
   ./build.sbt
 
 git commit -a -m "prepare next dev cycle for $version"
