@@ -1,6 +1,6 @@
 import sbt.Keys.libraryDependencies
 
-ThisBuild / version := "v0.3.0-SNAPSHOT"
+ThisBuild / version := "v0.2.3"
 ThisBuild / organization := "Tegonal GmbH"
 
 ThisBuild / scalaVersion := "3.1.2"
