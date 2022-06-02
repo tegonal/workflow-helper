@@ -10,7 +10,7 @@ runs:
   using: 'docker'
   image: 'docker://tegonal/workflow-helper:v0.2.4'
   args:
-    - 'bash -c ${{ inputs.commands }}'
+    - bash -c ${{ inputs.commands }}
 branding:
   icon: 'thermometer'
   color: 'green'
