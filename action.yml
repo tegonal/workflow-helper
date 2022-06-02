@@ -1,0 +1,13 @@
+# action.yml
+name: 'Workflow Helper'
+author: 'Tegonal GmbH, Switzerland'
+description: 'Utility to manage your actual workflow (not as in github workflow)'
+inputs:
+  args:  # id of input
+    description: 'arguments which will be passed to docker file'
+    required: true
+runs:
+  using: 'docker'
+  image: 'docker://tegonal/workflow-helper:v0.1.0'
+  args:
+    - ${{ inputs.args }}
