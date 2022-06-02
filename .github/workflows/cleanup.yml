@@ -15,11 +15,9 @@ jobs:
         with:
           distribution: 'adopt'
           java-version: 11
-      - name: Format Sources
-        run: sbt scalafmtAll scalafmtSbt
-      - name: Update help snippets in README
-        run: ./scripts/update-readme-help.sh
-      - name: Create Pull Request
+      - name: Cleanup Sources
+        run: ./scripts/dev/cleanup.sh
+      - name: Create Pull Request if necessary
         uses: peter-evans/create-pull-request@v4
         with:
           branch: auto-cleanup
