@@ -24,4 +24,8 @@ perl -0777 -i \
   -pe "s@(ThisBuild / version := \")[^\"]+\"@\$1$version\"@;" \
   ./build.sbt
 
+perl -0777 -i \
+  -pe "s(@image: 'docker://tegonal/workflow-helper:)[^']+'@\$1$version'@;" \
+  ./action.yml
+
 git commit -a -m "$version"
