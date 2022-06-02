@@ -99,15 +99,11 @@ jobs:
           git push origin "${{ steps.extract.outputs.version }}"
 
       - name: prepare next dev
+        if: steps.extract.outputs.isLatest
         run: |
           ./scripts/dev/prepare-next-dev-cycle.sh "${{ steps.extract.outputs.nextVersion }}"
           sbt test
-          git push
-
-      - name: Merge back to main
-        if: steps.extract.outputs.isLatest
-        run: |
           git fetch origin main
           git checkout -b main origin/main
-          git merge -m "Merge ${{ env.version }} back to main"
-          git push
+          git merge -m "Merge ${{ env.version }} back to main" "$GITHUB_REF"
+          git push origin -d "$GITHUB_REF"
