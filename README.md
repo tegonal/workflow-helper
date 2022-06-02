@@ -1,27 +1,27 @@
 <!-- for main -->
-<!--
+
 [![Download](https://img.shields.io/badge/Download-v0.2.4-%23007ec6)](https://hub.docker.com/r/tegonal/workflow-helper/tags?&name=v0.2.4)
 [![EUPL](https://img.shields.io/badge/%E2%9A%96-EUPL%201.2-%230b45a6)](https://joinup.ec.europa.eu/collection/eupl/eupl-text-11-12 "License")
 [![Build Status Ubuntu](https://github.com/tegonal/workflow-helper/workflows/Ubuntu/badge.svg?event=push&branch=main)](https://github.com/tegonal/workflow-helper/actions?query=workflow%3AUbuntu+branch%3Amain)
 [![Newcomers Welcome](https://img.shields.io/badge/%F0%9F%91%8B-Newcomers%20Welcome-blueviolet)](https://github.com/tegonal/workflow-helper/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22 "Ask in slack for help")
--->
-<!-- for a specific release -->
 
+<!-- for a specific release -->
+<!--
 [![Download](https://img.shields.io/badge/Download-v0.2.4-%23007ec6)](https://hub.docker.com/r/tegonal/workflow-helper/tags?&name=v0.2.4)
 [![EUPL](https://img.shields.io/badge/%E2%9A%96-EUPL%201.2-%230b45a6)](https://joinup.ec.europa.eu/collection/eupl/eupl-text-11-12 "License")
 [![Newcomers Welcome](https://img.shields.io/badge/%F0%9F%91%8B-Newcomers%20Welcome-blueviolet)](https://github.com/tegonal/workflow-helper/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22 "Ask in slack for help")
-
+-->
 
 # Workflow Helper
 
 Utility which helps in managing your workflows, i.e. development process, work process etc.
 
-<!---
+---
 ❗ You are taking a *sneak peek* at the next version.
 Please have a look at the README of the git tag in case you are looking for the documentation of the corresponding version.
 For instance, the [README of v0.2.4](https://github.com/tegonal/workflow-helper/tree/v0.2.4/README.md).
 
---->
+---
 
 **Table of Content**
 - [TODO Checker](#todo-checker)
