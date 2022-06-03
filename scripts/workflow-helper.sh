@@ -6,4 +6,10 @@ if [[ -z "$1" ]]; then
   exit 1
 fi
 
-eval "$@"
+# for gitlab which passes sh -c, in this case we just exec a bash
+if [[ "$1" =~ ^sh|bash ]]; then
+ /usr/bin/env/bash
+else
+  eval "$@"
+fi
+
