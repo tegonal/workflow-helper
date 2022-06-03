@@ -1,9 +1,6 @@
 #!/usr/bin/env bash
 set -e
 
-current_dir="$( cd "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
-source "$current_dir/parse-args.sh"
-
 declare -A params
 declare -A help
 
@@ -41,6 +38,9 @@ todo-checker -i "#123|op#478"
 todo-checker --issue-regex "#123|op#478"
 EOM
 )
+
+current_dir="$( cd "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
+. "$current_dir/parse-args.sh"
 
 parseArguments params "$@"
 if ! [ -v directory ]; then directory="."; fi
