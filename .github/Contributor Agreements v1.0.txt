@@ -1,12 +1,12 @@
-﻿Atrium Contributor Agreements v1.0
+﻿Tegonal Workflow Helper Contributor Agreements v1.0
  
 This agreement is based on the Harmony contributor agreements harmonyagreements.org.
 Thank you for your interest in contributing to the project
-Atrium
+Workflow Helper
 currently developed on the platform 
-https://github.com/robstoll/atrium
+https://github.com/tegonal/workflow-helper
 and owned by 
-Robert Stoll (the “Project Owner”, hereafter "We" or "Us").
+Tegonal GmbH, Switzerland (the “Project Owner”, hereafter "We" or "Us").
 
 This contributor agreement ("Agreement") documents the rights granted by contributors to 
 Us. To make this document effective, please sign it. The consent in the form of a sign-off
