@@ -28,7 +28,4 @@ perl -0777 -i \
   -pe "s@(image: 'docker://tegonal/workflow-helper:)[^']+'@\${1}$version'@;" \
   ./action.yml
 
-find ./.github/workflows -name "*.yml" | xargs perl -0777 -i \
-  -pe "s#(uses: tegonal/workflow-helper@)#\${1}$version#;"
-
 git commit -a -m "$version"
