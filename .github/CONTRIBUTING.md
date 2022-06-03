@@ -52,10 +52,10 @@ The following are a few guidelines on how we suggest you start.
 2. Use an IDE which supports scala 3:
    e.g. [IntelliJ Community Edition](https://www.jetbrains.com/idea/download/) with the scala plugin
    or [visual studio code](https://code.visualstudio.com) with the [metals](https://scalameta.org/metals/docs/editors/vscode/) plugin.
-4. Import the project
-5. Open up a terminal (e.g. Intellij's built in -> usually ALT+F12) and run `sbt test` 
+3. Import the project
+4. Open up a terminal (e.g. Intellij's built in -> usually ALT+F12) and run `sbt test` 
    This builds the project (compile, run tests etc) via [sbt](https://www.scala-sbt.org/)
-6. Read up the [Coding Conventions](#coding-conventions) (there are only 5 points).
+5. Read up the [Coding Conventions](#coding-conventions) (there are only 5 points).
 
 Perfect, you are setup and ready to go. 
 Have a look at [help wanted issues](https://github.com/tegonal/workflow-helper/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22)
