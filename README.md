@@ -24,7 +24,8 @@ For instance, the [README of v0.2.8](https://github.com/tegonal/workflow-helper/
 ---
 
 **Table of Content**
-- [TODO Checker](#todo-checker)
+- [Scripts](#scripts)
+  - [TODO Checker](#todo-checker)
 - [Usage GitHub Workflow](#usage-github-workflow)
 - [Usage GitLab](#usage-gitlab)
 - [Contributors and contribute](#contributors-and-contribute)
