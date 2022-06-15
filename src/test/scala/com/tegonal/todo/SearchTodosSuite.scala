@@ -2,11 +2,13 @@ package com.tegonal.todo
 
 import com.tegonal.todo.analysis.AnalysisException
 
+import java.io.ByteArrayOutputStream
 import java.nio.file.{Files, Path}
-import java.nio.charset.StandardCharsets
+import java.nio.charset.{Charset, StandardCharsets}
 import java.nio.file.attribute.{DosFileAttributes, PosixFilePermissions}
+import scala.jdk.CollectionConverters.*
 
-class TodoFoundSuite extends munit.FunSuite {
+class TodoFoundSuite extends TegonalSuite {
   List(
     (
       "default - finds TODO start of line",
@@ -57,23 +59,41 @@ class TodoFoundSuite extends munit.FunSuite {
       "if x < 10 then // TODO PROJ#123"
     ),
   ).foreach((description, todoIndicator, issueIndicator, content) => {
-    FunFixture[Path](
-      setup = { test =>
-        val path = Files.createTempFile("workflow-helper_" + test.name, ".txt")
-        Files.writeString(path, content, StandardCharsets.UTF_8)
-      },
-      teardown = { file =>
-        Files.deleteIfExists(file)
-      }
-    ).test(description) { file =>
+    writeStringToFileFixture(content).test(description) { file =>
       intercept[AnalysisException] {
         throwingTodoChecker(file, todoIndicator, issueIndicator)
       }
     }
   })
+
+  writeStringToFileFixture("TODO #123", StandardCharsets.ISO_8859_1)
+    .test("write file in ISO-8859-1") { file =>
+      intercept[AnalysisException] {
+        throwingTodoChecker(
+          file,
+          TodoIndicator(TodoIndicator.DEFAULT_PATTERN.r),
+          IssueIndicator(IssueIndicator.DEFAULT_PATTERN.r)
+        )
+      }
+    }
+
+  fileFixture(file => Files.write(file, BigInt(255).toByteArray))
+    .test("write byte file, illegal utf-8 sequence is ignored") { file =>
+      val errCapture = new ByteArrayOutputStream()
+      Console.withErr(errCapture) {
+        throwingTodoChecker(
+          file,
+          TodoIndicator(TodoIndicator.DEFAULT_PATTERN.r),
+          IssueIndicator(IssueIndicator.DEFAULT_PATTERN.r)
+        )
+      }
+      val array = errCapture.toByteArray
+
+      assert(array.isEmpty, s"error reported: ${new String(array, StandardCharsets.UTF_8)}")
+    }
 }
 
-class NoTodoFoundSuite extends munit.FunSuite {
+class NoTodoFoundSuite extends TegonalSuite {
   List(
     (
       "default - does not find with suffix",
@@ -88,15 +108,7 @@ class NoTodoFoundSuite extends munit.FunSuite {
       "// TODO PROJ#123"
     ),
   ).foreach((description, todoIndicator, issueIndicator, content) => {
-    FunFixture[Path](
-      setup = { test =>
-        val path = Files.createTempFile("workflow-helper_" + test.name, ".txt")
-        Files.writeString(path, content, StandardCharsets.UTF_8)
-      },
-      teardown = { file =>
-        Files.deleteIfExists(file)
-      }
-    ).test(description) { file =>
+    writeStringToFileFixture(content, StandardCharsets.UTF_8).test(description) { file =>
       todoChecker(file, todoIndicator, issueIndicator)
     }
   })

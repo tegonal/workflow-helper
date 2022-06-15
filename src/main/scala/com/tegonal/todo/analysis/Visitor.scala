@@ -3,9 +3,13 @@ package com.tegonal.todo.analysis
 import com.tegonal.todo.analysis.Processor
 
 import java.io.IOException
+import java.nio.charset.{MalformedInputException, StandardCharsets}
 import java.nio.file.attribute.BasicFileAttributes
 import java.nio.file.{FileVisitResult, Files, Path, SimpleFileVisitor}
 import scala.Console.{RED, RESET, YELLOW}
+import scala.collection.SeqView
+import scala.util.control.Breaks.break
+import scala.util.{Failure, Try}
 
 class Visitor(processors: Seq[Processor]) extends SimpleFileVisitor[Path] {
   private val ignorePatterns: Set[String] = Set(
@@ -41,6 +45,9 @@ class Visitor(processors: Seq[Processor]) extends SimpleFileVisitor[Path] {
       }
       FileVisitResult.CONTINUE
     } catch {
+      case _: MalformedInputException =>
+        // ignore (most likely a binary file) and continue
+        FileVisitResult.CONTINUE
       case t: Throwable =>
         Console.err.println(
           s"$RESET${YELLOW}WARNING$RESET analysing file $file -- ${t.getClass.getName}: ${t.getMessage}"
