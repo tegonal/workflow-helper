@@ -8,7 +8,7 @@ fi
 
 # for gitlab which passes sh -c, in this case we just exec a bash
 if [[ "$1" =~ ^sh|bash ]]; then
- /usr/bin/env/bash
+ /usr/bin/env bash
 else
   eval "$@"
 fi
