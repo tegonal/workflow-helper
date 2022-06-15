@@ -39,7 +39,7 @@ todo-checker --issue-regex "#123|op#478"
 EOM
 )
 
-current_dir="$( cd "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
+current_dir="$( cd -- "$( dirname -- "${BASH_SOURCE[0]:-$0}"; )" &> /dev/null && pwd 2> /dev/null; )";
 . "$current_dir/parse-args.sh"
 
 parseArguments params "$@"
