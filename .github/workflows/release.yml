@@ -14,21 +14,19 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
-            const { GITHUB_REF } = process.env
-            console.log("ref", GITHUB_REF)
+            const { GITHUB_REF, GITHUB_REPOSITORY } = process.env
             const matches = new RegExp("refs/heads/release/(latest/)?(v[0-9]+\.[0-9]+\.[0-9]+(?:-RC[0-9]+)?)", "g").exec(GITHUB_REF)
-            console.log("matches", matches)
             if (matches == null || matches[2] === undefined) {
               core.error('looks like a wrong version was defined, did not match vx.y.z => ' + GITHUB_REF)
             }
             const version = matches[2]
-            const mainTag = 'tegonal/workflow-helper:' + version
+            const mainTag = GITHUB_REPOSITORY + ':' + version
             const isLatest = matches[1] !== undefined
 
             core.setOutput('version', version)
             core.setOutput('mainTag', mainTag)
             core.setOutput('isLatest', isLatest)
-            core.setOutput('dockerTags', mainTag + (isLatest ? ',tegonal/workflow-helper:latest' : '') )
+            core.setOutput('dockerTags', mainTag + (isLatest ? ',' + GITHUB_REPOSITORY + ':latest' : '') )
 
             const nextVersion = new RegExp("v([0-9]+)\.([0-9]+)").exec(version)
             core.setOutput('nextVersion', 'v' + nextVersion[1] + '.' + (parseInt(nextVersion[2], 10) + 1) + '.0-SNAPSHOT')
