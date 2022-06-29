@@ -34,6 +34,6 @@ jobs:
           fi
       - name: Check no own todos
         if: matrix.java_version == 11
-        uses: tegonal/workflow-helper@v0.2.9
+        uses: tegonal/workflow-helper@v0.3.0
         with:
           commands: 'todo-checker -i "wh#\d+"'
