@@ -27,5 +27,3 @@ perl -0777 -i \
 perl -0777 -i \
   -pe "s@(image: 'docker://tegonal/workflow-helper:)[^']+'@\${1}$version'@;" \
   ./action.yml
-
-git commit -a -m "$version"

@@ -30,6 +30,9 @@ jobs:
 
             const nextVersion = new RegExp("v([0-9]+)\.([0-9]+)").exec(version)
             core.setOutput('nextVersion', 'v' + nextVersion[1] + '.' + (parseInt(nextVersion[2], 10) + 1) + '.0-SNAPSHOT')
+      - name: Check tag does not exist
+        run: | 
+          git ls-remote --tags origin | (grep "refs/tags/v0.3.0" && echo "tag already exists, aborting" && false)
 
       - uses: actions/checkout@v2
       - name: "Set up JDK 11"
@@ -65,7 +68,9 @@ jobs:
         run: ./scripts/todo-checker.sh -d "${GITHUB_WORKSPACE}" -i "${{ steps.extract.outputs.version }}"
 
       - name: push prepared changes
-        run: git push
+        run: |
+          git commit -a -m "${{ steps.extract.outputs.version }}"
+          git push
 
       - uses: docker/setup-qemu-action@v2
       - uses: docker/setup-buildx-action@v2
@@ -102,6 +107,7 @@ jobs:
         run: |
           ./scripts/dev/prepare-next-dev-cycle.sh "${{ steps.extract.outputs.nextVersion }}"
           sbt test
+          git commit -a -m "prepare next dev cycle for $version"
           git fetch origin main
           git checkout -b main origin/main
           git merge -m "Merge ${{ env.version }} back to main" "$GITHUB_REF"
