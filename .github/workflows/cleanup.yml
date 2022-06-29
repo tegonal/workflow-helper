@@ -15,6 +15,7 @@ jobs:
         with:
           distribution: 'adopt'
           java-version: 11
+          cache: sbt
       - name: Cleanup Sources
         run: ./scripts/dev/cleanup.sh
       - name: Create Pull Request if necessary
