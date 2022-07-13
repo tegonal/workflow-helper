@@ -1,4 +1,4 @@
-﻿Tegonal Workflow Helper Contributor Agreements v1.0
+﻿Tegonal Contributor Agreements v1.0
  
 This agreement is based on the Harmony contributor agreements harmonyagreements.org.
 Thank you for your interest in contributing to the project
