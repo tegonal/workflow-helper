@@ -45,9 +45,9 @@ Following the output of running `todo-checker --help`:
 <!-- auto-generated, do not modify here but in ./scripts/todo-checker.sh -->
 ```text
 Parameters:
+-i|--issue-regex     (optional) regex used to match an issue number -- default: #d+
 -d|--directory       (optional) specifies which directory (including sub directories) shall be analysed -- default: .
 -t|--todo-regex      (optional) regex used to match todos -- default: TODO|FIXME
--i|--issue-regex     (optional) regex used to match an issue number -- default: #d+
 
 Examples:
 # searches for todos in current directory
