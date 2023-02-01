@@ -81,7 +81,7 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Build and export to Docker
-        uses: docker/build-push-action@v3
+        uses: docker/build-push-action@v4
         with:
           context: .
           load: true
@@ -91,7 +91,7 @@ jobs:
         run: docker run --rm ${{ steps.extract.outputs.mainTag }} todo-checker --help
 
       - name: Build and push
-        uses: docker/build-push-action@v3
+        uses: docker/build-push-action@v4
         with:
           context: .
           push: true
