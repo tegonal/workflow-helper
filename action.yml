@@ -1,6 +1,6 @@
 # action.yml
 name: 'Workflow Helper'
-author: 'Tegonal GmbH, Switzerland'
+author: 'Tegonal Genossenschaft, Switzerland'
 description: 'Utility to manage your actual workflow (not as in github workflow)'
 inputs:
   commands:
