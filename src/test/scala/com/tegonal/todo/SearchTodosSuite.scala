@@ -14,6 +14,12 @@ class TodoFoundSuite extends TegonalSuite {
       "default - finds TODO start of line",
       TodoIndicator(TodoIndicator.DEFAULT_PATTERN.r),
       IssueIndicator(IssueIndicator.DEFAULT_PATTERN.r),
+      "TODO #123"
+    ),
+    (
+      "default - finds TODO start of line after comment",
+      TodoIndicator(TodoIndicator.DEFAULT_PATTERN.r),
+      IssueIndicator(IssueIndicator.DEFAULT_PATTERN.r),
       "// TODO #123"
     ),
     (
@@ -37,25 +43,25 @@ class TodoFoundSuite extends TegonalSuite {
     (
       "with issue indicator",
       TodoIndicator(TodoIndicator.DEFAULT_PATTERN.r),
-      IssueIndicator("PROJ".r),
+      IssueIndicator("PROJ#".r),
       "if x < 10 then // TODO PROJ#123"
     ),
     (
       "with complex issue indicator 1",
       TodoIndicator(TodoIndicator.DEFAULT_PATTERN.r),
-      IssueIndicator("PROJ|ABC?".r),
+      IssueIndicator("PROJ|ABC?#".r),
       "if x < 10 then // TODO AB#123"
     ),
     (
       "with complex issue indicator 2",
       TodoIndicator(TodoIndicator.DEFAULT_PATTERN.r),
-      IssueIndicator("PROJ|ABC?".r),
+      IssueIndicator("PROJ|ABC?#".r),
       "if x < 10 then // TODO ABC#123"
     ),
     (
       "with complex issue indicator 3",
       TodoIndicator(TodoIndicator.DEFAULT_PATTERN.r),
-      IssueIndicator("PROJ|ABC?".r),
+      IssueIndicator("PROJ|ABC?#".r),
       "if x < 10 then // TODO PROJ#123"
     ),
   ).foreach((description, todoIndicator, issueIndicator, content) => {

@@ -31,6 +31,8 @@ def throwingTodoChecker(
     FindTodoProcessor(todoIndicator: TodoIndicator, issueIndicator: IssueIndicator)
   )
 
+  Console.println(s"${RESET}${CYAN}INFO${RESET} going to analyse $directory")
+  
   val visitor = new Visitor(processors)
   Files.walkFileTree(directory, visitor)
 
