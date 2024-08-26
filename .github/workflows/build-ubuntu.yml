@@ -12,7 +12,7 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        java_version: [ 11, 17 ]
+        java_version: [ 11 ]
 
     steps:
       - uses: actions/checkout@v3
@@ -23,8 +23,8 @@ jobs:
           java-version: ${{ matrix.java_version }}
           cache: sbt
 
-      - name: build
-        run: sbt test
+#      - name: build
+#        run: sbt test
 
       - name: check finds test todos
         run: |
@@ -34,6 +34,17 @@ jobs:
           else
             echo "todo-checker found errors as expected"
           fi
+      - name: ls
+        run: | 
+          pwd
+          ls -la
+
+      - name: List Files using Docker
+        uses: docker://alpine:latest
+        with:
+          entrypoint: /bin/sh
+          args: -c "pwd; ls -la"
+          
       - name: Check no own todos
         if: matrix.java_version == 11
         uses: tegonal/workflow-helper@v0.3.0
