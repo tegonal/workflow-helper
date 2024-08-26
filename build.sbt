@@ -13,3 +13,5 @@ lazy val root = (project in file("."))
       "org.scalameta" %% "munit" % "1.0.1" % Test
     )
   )
+
+// release process via .github/workflows/release.yml
