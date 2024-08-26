@@ -30,7 +30,9 @@ jobs:
         run: |
           ./scripts/dev/assemble.sh
           if ./scripts/todo-checker.sh ; then 
-            echo "todo-checker should have found todos and fail but exit code was 0" && false; 
+            echo "todo-checker should have found todos and fail but exit code was 0" && false
+          else
+            echo "todo-checker found errors as expected"
           fi
       - name: Check no own todos
         if: matrix.java_version == 11
