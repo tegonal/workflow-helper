@@ -10,7 +10,7 @@ lazy val root = (project in file("."))
   .settings(
     libraryDependencies ++= Seq(
       // test dependencies
-      "org.scalameta" %% "munit" % "1.0.1" % Test
+      "org.scalameta" %% "munit" % "1.0.2" % Test
     )
   )
 
